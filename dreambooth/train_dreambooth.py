@@ -410,15 +410,6 @@ def main(class_gen_method: str = "Native Diffusers", user: str = None) -> TrainR
                     f"Text encoder loaded as datatype {accelerator.unwrap_model(text_encoder).dtype}."
                     f" {low_precision_error_string}"
                 )
-                
-            if (
-                    args.stop_text_encoder != 0
-                    and accelerator.unwrap_model(text_encoder_two).dtype != torch.float32
-            ):
-                logger.warning(
-                    f"Text encoder loaded as datatype {accelerator.unwrap_model(text_encoder_two).dtype}."
-                    f" {low_precision_error_string}"
-                )
 
         if args.gradient_checkpointing:
             if args.train_unet:
